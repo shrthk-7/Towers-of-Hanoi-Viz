@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import getTowerStates from "../../utils/towerStates";
-import Bar from "../bar";
+import initState from "../../utils/initState";
+import Bar from "../Bar";
 import "./style.css";
 
+const numberOfDiscs = 5;
+
 export default function Hanoi() {
-  const [state, setState] = useState([[6, 5, 4, 3, 2, 1], [], []]);
+  const [state, setState] = useState(initState(numberOfDiscs));
 
   useEffect(() => {
     const stateCopy = JSON.parse(JSON.stringify(state));
-    getTowerStates(stateCopy, setState, 6);
+    getTowerStates(stateCopy, setState, numberOfDiscs);
   }, []);
 
   return (

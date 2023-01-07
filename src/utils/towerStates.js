@@ -1,3 +1,5 @@
+const timeBetweenSwaps = 1000;
+
 export default function hanoi(
   state,
   setState,
@@ -12,7 +14,7 @@ export default function hanoi(
     const stateCopy = JSON.parse(JSON.stringify(state));
     setTimeout(() => {
       setState(stateCopy);
-    }, swaps[0]++ * 1000);
+    }, swaps[0]++ * timeBetweenSwaps);
     return;
   }
 
@@ -21,6 +23,6 @@ export default function hanoi(
   const stateCopy = JSON.parse(JSON.stringify(state));
   setTimeout(() => {
     setState(stateCopy);
-  }, swaps[0]++ * 1000);
+  }, swaps[0]++ * timeBetweenSwaps);
   hanoi(state, setState, n - 1, aux, from, to, swaps);
 }
